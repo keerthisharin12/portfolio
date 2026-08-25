@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 /* =========================================================
-   CURSOR
+   CUSTOM CURSOR
 ========================================================= */
 
 const dot =
@@ -16,8 +16,9 @@ const dot =
 const ring =
   document.querySelector('.cursor-ring');
 
-let mouseX = innerWidth / 2;
-let mouseY = innerHeight / 2;
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
 
 let ringX = mouseX;
 let ringY = mouseY;
@@ -44,12 +45,10 @@ window.addEventListener('mousemove', e => {
 function cursorLoop(){
 
   ringX +=
-    (mouseX - ringX) *
-    0.13;
+    (mouseX - ringX) * .13;
 
   ringY +=
-    (mouseY - ringY) *
-    0.13;
+    (mouseY - ringY) * .13;
 
 
   if(ring){
@@ -69,6 +68,7 @@ function cursorLoop(){
 
 }
 
+
 cursorLoop();
 
 
@@ -78,7 +78,7 @@ cursorLoop();
 
 document
   .querySelectorAll(
-    'a, .tilt-card, .magnetic, .skill'
+    'a, .tilt-card, .magnetic, .skill, .hero-photo-frame'
   )
   .forEach(el => {
 
@@ -108,6 +108,7 @@ document
   });
 
 
+
 /* =========================================================
    MAGNETIC ELEMENTS
 ========================================================= */
@@ -128,12 +129,10 @@ document
     function animateMagnetic(){
 
       currentX +=
-        (targetX - currentX) *
-        0.12;
+        (targetX - currentX) * .12;
 
       currentY +=
-        (targetY - currentY) *
-        0.12;
+        (targetY - currentY) * .12;
 
 
       el.style.transform =
@@ -179,7 +178,7 @@ document
             e.clientX -
             rect.left -
             rect.width / 2
-          ) * 0.10;
+          ) * .10;
 
 
         targetY =
@@ -187,7 +186,7 @@ document
             e.clientY -
             rect.top -
             rect.height / 2
-          ) * 0.10;
+          ) * .10;
 
       }
     );
@@ -209,12 +208,13 @@ document
 
           el.style.transform = '';
 
-        },350);
+        }, 350);
 
       }
     );
 
   });
+
 
 
 /* =========================================================
@@ -244,27 +244,14 @@ cards.forEach(card => {
 
   function animateCard(){
 
-    /*
-      Extremely soft interpolation.
-
-      The old card movement was direct.
-      This makes the card "float" toward
-      the cursor instead.
-    */
-
     currentRX +=
-      (targetRX - currentRX) *
-      0.055;
-
+      (targetRX - currentRX) * .055;
 
     currentRY +=
-      (targetRY - currentRY) *
-      0.055;
-
+      (targetRY - currentRY) * .055;
 
     currentScale +=
-      (targetScale - currentScale) *
-      0.065;
+      (targetScale - currentScale) * .065;
 
 
     card.style.transform =
@@ -287,31 +274,22 @@ cards.forEach(card => {
   }
 
 
-  /* =======================================================
-     ENTER
-  ======================================================= */
-
   card.addEventListener(
     'mouseenter',
     () => {
 
-      targetScale = 1.012;
-
+      targetScale =
+        1.012;
 
       cancelAnimationFrame(
         animationFrame
       );
-
 
       animateCard();
 
     }
   );
 
-
-  /* =======================================================
-     MOVE
-  ======================================================= */
 
   card.addEventListener(
     'mousemove',
@@ -332,10 +310,8 @@ cards.forEach(card => {
 
 
       /*
-        Very low rotation sensitivity.
-
-        This is intentionally much softer
-        than the original /-24 and /24.
+         VERY LOW ROTATION
+         Prevents hard movement.
       */
 
       targetRX =
@@ -352,11 +328,6 @@ cards.forEach(card => {
         ) / 75;
 
 
-      /*
-        Used by the CSS cursor-following
-        highlight.
-      */
-
       card.style.setProperty(
         '--mx',
         `${x}px`
@@ -372,10 +343,6 @@ cards.forEach(card => {
   );
 
 
-  /* =======================================================
-     LEAVE
-  ======================================================= */
-
   card.addEventListener(
     'mouseleave',
     () => {
@@ -384,12 +351,6 @@ cards.forEach(card => {
       targetRY = 0;
       targetScale = 1;
 
-
-      /*
-        Keep interpolation running so
-        the card gently settles instead
-        of snapping back.
-      */
 
       cancelAnimationFrame(
         animationFrame
@@ -402,9 +363,9 @@ cards.forEach(card => {
       setTimeout(() => {
 
         if(
-          Math.abs(currentRX) < 0.03 &&
-          Math.abs(currentRY) < 0.03 &&
-          Math.abs(currentScale - 1) < 0.003
+          Math.abs(currentRX) < .03 &&
+          Math.abs(currentRY) < .03 &&
+          Math.abs(currentScale - 1) < .003
         ){
 
           cancelAnimationFrame(
@@ -422,12 +383,13 @@ cards.forEach(card => {
 
         }
 
-      },700);
+      }, 700);
 
     }
   );
 
 });
+
 
 
 /* =========================================================
@@ -438,89 +400,192 @@ gsap.utils
   .toArray('.reveal')
   .forEach(el => {
 
-    gsap.to(el, {
+    /*
+       Photo uses its own animation,
+       so don't overwrite its transform.
+    */
 
-      opacity:1,
+    if(
+      el.classList.contains(
+        'hero-photo-wrap'
+      )
+    ){
 
-      y:0,
+      gsap.fromTo(
+        el,
+        {
+          opacity:0,
+          x:70,
+          scale:.96
+        },
+        {
+          opacity:1,
+          x:0,
+          scale:1,
+          duration:1.25,
+          ease:'power4.out',
+          delay:.35
+        }
+      );
 
-      duration:1.1,
+      return;
 
-      ease:'power4.out',
+    }
 
-      scrollTrigger:{
 
-        trigger:el,
+    gsap.to(
+      el,
+      {
+        opacity:1,
+        y:0,
+        duration:1.1,
+        ease:'power4.out',
 
-        start:'top 88%',
-
-        once:true
+        scrollTrigger:{
+          trigger:el,
+          start:'top 88%',
+          once:true
+        }
 
       }
-
-    });
+    );
 
   });
+
 
 
 /* =========================================================
    HERO ANIMATION
 ========================================================= */
 
-gsap.from(
-  '.hero-title .line',
+/* =========================================================
+   HERO DESCRIPTION + ACTIONS
+   STABLE DESKTOP ANIMATION
+========================================================= */
+
+gsap.fromTo(
+  '.hero-sub',
   {
-
-    y:120,
-
-    opacity:0,
-
-    stagger:.12,
-
-    duration:1.4,
-
-    ease:'power4.out',
-
-    delay:.2
-
-  }
-);
-
-
-gsap.from(
-  '.hero .eyebrow',
-  {
-
-    y:20,
-
-    opacity:0,
-
-    duration:.8,
-
-    delay:.05
-
-  }
-);
-
-
-gsap.from(
-  '.hero-sub, .hero-actions',
-  {
-
     y:25,
-
-    opacity:0,
-
-    stagger:.12,
-
+    opacity:0
+  },
+  {
+    y:0,
+    opacity:1,
     duration:1,
-
     ease:'power3.out',
-
-    delay:.75
-
+    delay:.65,
+    clearProps:'transform'
   }
 );
+
+
+gsap.fromTo(
+  '.hero-actions',
+  {
+    y:25,
+    opacity:0
+  },
+  {
+    y:0,
+    opacity:1,
+    duration:1,
+    ease:'power3.out',
+    delay:.82,
+    clearProps:'transform'
+  }
+);
+
+
+
+/* =========================================================
+   PREMIUM PROFILE PHOTO PARALLAX
+========================================================= */
+
+const heroPhoto =
+  document.querySelector(
+    '.hero-photo-frame'
+  );
+
+const heroPhotoWrap =
+  document.querySelector(
+    '.hero-photo-wrap'
+  );
+
+
+let photoTargetX = 0;
+let photoTargetY = 0;
+
+let photoCurrentX = 0;
+let photoCurrentY = 0;
+
+
+if(heroPhoto && heroPhotoWrap){
+
+  window.addEventListener(
+    'mousemove',
+    e => {
+
+      /*
+         Disable strong movement.
+         The portrait should feel expensive,
+         not like a floating 3D object.
+      */
+
+      photoTargetX =
+        (
+          e.clientX /
+          window.innerWidth -
+          .5
+        ) * 10;
+
+
+      photoTargetY =
+        (
+          e.clientY /
+          window.innerHeight -
+          .5
+        ) * 8;
+
+    }
+  );
+
+
+  function animatePhoto(){
+
+    photoCurrentX +=
+      (
+        photoTargetX -
+        photoCurrentX
+      ) * .045;
+
+
+    photoCurrentY +=
+      (
+        photoTargetY -
+        photoCurrentY
+      ) * .045;
+
+
+    heroPhoto.style.transform =
+      `translate3d(
+        ${photoCurrentX}px,
+        ${photoCurrentY}px,
+        0
+      )`;
+
+
+    requestAnimationFrame(
+      animatePhoto
+    );
+
+  }
+
+
+  animatePhoto();
+
+}
+
 
 
 /* =========================================================
@@ -532,6 +597,7 @@ const menuBtn =
     '.menu-btn'
   );
 
+
 const links =
   document.querySelector(
     '.nav-links'
@@ -542,19 +608,28 @@ menuBtn?.addEventListener(
   'click',
   () => {
 
-    links?.classList.toggle(
-      'open'
-    );
+    const isOpen =
+      links?.classList.toggle(
+        'open'
+      );
+
 
     menuBtn.classList.toggle(
       'open'
+    );
+
+
+    menuBtn.setAttribute(
+      'aria-expanded',
+      isOpen ? 'true' : 'false'
     );
 
   }
 );
 
 
-links?.querySelectorAll('a')
+links
+  ?.querySelectorAll('a')
   .forEach(link => {
 
     link.addEventListener(
@@ -565,8 +640,15 @@ links?.querySelectorAll('a')
           'open'
         );
 
+
         menuBtn?.classList.remove(
           'open'
+        );
+
+
+        menuBtn?.setAttribute(
+          'aria-expanded',
+          'false'
         );
 
       }
@@ -575,8 +657,9 @@ links?.querySelectorAll('a')
   });
 
 
+
 /* =========================================================
-   CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
+   CLOSE MOBILE MENU
 ========================================================= */
 
 document.addEventListener(
@@ -586,30 +669,46 @@ document.addEventListener(
     if(
       !menuBtn ||
       !links
-    ) return;
+    ){
+
+      return;
+
+    }
 
 
     const clickedInsideNav =
-      e.target.closest('.nav');
+      e.target.closest(
+        '.nav'
+      );
 
 
     if(
       !clickedInsideNav &&
-      links.classList.contains('open')
+      links.classList.contains(
+        'open'
+      )
     ){
 
       links.classList.remove(
         'open'
       );
 
+
       menuBtn.classList.remove(
         'open'
+      );
+
+
+      menuBtn.setAttribute(
+        'aria-expanded',
+        'false'
       );
 
     }
 
   }
 );
+
 
 
 /* =========================================================
@@ -630,7 +729,9 @@ const brightSections =
 
 function updateNavbarTheme(){
 
-  if(!nav) return;
+  if(!nav){
+    return;
+  }
 
 
   const navRect =
@@ -690,807 +791,65 @@ window.addEventListener(
 updateNavbarTheme();
 
 
+
 /* =========================================================
-   GEOMETRIC ENERGY CORE
-=========================================================
-
-   WHITE
-   SILVER
-   GRAPHITE
-   LIGHT GREY
-
-   NO RED
-   NO GREEN
-   NO COLORED GLOW
-   NO SMOOTH BALL
-
+   HERO PHOTO LOAD EFFECT
 ========================================================= */
 
-const canvas =
-  document.getElementById(
-    'creature-canvas'
+const profileImage =
+  document.querySelector(
+    '.hero-photo'
   );
 
 
-if(
-  canvas &&
-  typeof THREE !== 'undefined'
-){
+if(profileImage){
 
-  /* =======================================================
-     SCENE
-  ======================================================= */
+  profileImage.addEventListener(
+    'load',
+    () => {
 
-  const scene =
-    new THREE.Scene();
-
-
-  /* =======================================================
-     CAMERA
-  ======================================================= */
-
-  const camera =
-    new THREE.PerspectiveCamera(
-      42,
-      innerWidth / innerHeight,
-      .1,
-      100
-    );
-
-
-  camera.position.set(
-    0,
-    0,
-    8.5
-  );
-
-
-  /* =======================================================
-     RENDERER
-  ======================================================= */
-
-  const renderer =
-    new THREE.WebGLRenderer({
-
-      canvas,
-
-      alpha:true,
-
-      antialias:true
-
-    });
-
-
-  renderer.setPixelRatio(
-    Math.min(
-      devicePixelRatio,
-      2
-    )
-  );
-
-
-  renderer.setSize(
-    innerWidth,
-    innerHeight
-  );
-
-
-  if(
-    'outputColorSpace'
-    in renderer
-  ){
-
-    renderer.outputColorSpace =
-      THREE.SRGBColorSpace;
-
-  }
-
-  else{
-
-    renderer.outputEncoding =
-      THREE.sRGBEncoding;
-
-  }
-
-
-  /* =======================================================
-     CORE GROUP
-  ======================================================= */
-
-  const coreGroup =
-    new THREE.Group();
-
-
-  scene.add(
-    coreGroup
-  );
-
-
-  coreGroup.position.set(
-    2.35,
-    .15,
-    0
-  );
-
-
-  /* =======================================================
-     COLORS
-  ======================================================= */
-
-  const SILVER =
-    0xdfe2e5;
-
-  const WHITE =
-    0xffffff;
-
-  const GRAPHITE =
-    0x8d9094;
-
-
-  /* =======================================================
-     MAIN ANGULAR CORE
-  ======================================================= */
-
-  const coreGeometry =
-    new THREE.OctahedronGeometry(
-      1.18,
-      1
-    );
-
-
-  const coreMaterial =
-    new THREE.MeshStandardMaterial({
-
-      color:
-        GRAPHITE,
-
-      roughness:
-        .30,
-
-      metalness:
-        .82,
-
-      flatShading:
-        true
-
-    });
-
-
-  const core =
-    new THREE.Mesh(
-      coreGeometry,
-      coreMaterial
-    );
-
-
-  coreGroup.add(
-    core
-  );
-
-
-  /* =======================================================
-     INNER CRYSTAL
-  ======================================================= */
-
-  const innerGeometry =
-    new THREE.DodecahedronGeometry(
-      .62,
-      0
-    );
-
-
-  const innerMaterial =
-    new THREE.MeshStandardMaterial({
-
-      color:
-        WHITE,
-
-      roughness:
-        .18,
-
-      metalness:
-        .68,
-
-      emissive:
-        0x55585c,
-
-      emissiveIntensity:
-        .14,
-
-      flatShading:
-        true
-
-    });
-
-
-  const inner =
-    new THREE.Mesh(
-      innerGeometry,
-      innerMaterial
-    );
-
-
-  inner.rotation.set(
-    .35,
-    .2,
-    .4
-  );
-
-
-  coreGroup.add(
-    inner
-  );
-
-
-  /* =======================================================
-     ANGULAR CAGE
-  ======================================================= */
-
-  const cageGeometry =
-    new THREE.IcosahedronGeometry(
-      1.48,
-      1
-    );
-
-
-  const cageMaterial =
-    new THREE.MeshBasicMaterial({
-
-      color:
-        SILVER,
-
-      wireframe:
-        true,
-
-      transparent:
-        true,
-
-      opacity:
-        .36
-
-    });
-
-
-  const cage =
-    new THREE.Mesh(
-      cageGeometry,
-      cageMaterial
-    );
-
-
-  coreGroup.add(
-    cage
-  );
-
-
-  /* =======================================================
-     ORBIT RINGS
-  ======================================================= */
-
-  const ringConfigs = [
-
-    {
-      radius:1.62,
-
-      rotation:[
-        Math.PI / 2,
-        .05,
-        .18
-      ],
-
-      speed:.003
-    },
-
-    {
-      radius:1.88,
-
-      rotation:[
-        .28,
-        Math.PI / 2,
-        .65
-      ],
-
-      speed:-.0022
-    },
-
-    {
-      radius:2.12,
-
-      rotation:[
-        1.05,
-        .42,
-        .05
-      ],
-
-      speed:.0017
-    }
-
-  ];
-
-
-  ringConfigs.forEach(
-    (config,index) => {
-
-      const ringGeometry =
-        new THREE.TorusGeometry(
-          config.radius,
-          .012,
-          4,
-          96
-        );
-
-
-      const ringMaterial =
-        new THREE.MeshBasicMaterial({
-
-          color:
-            index === 1
-              ? SILVER
-              : WHITE,
-
-          transparent:
-            true,
-
-          opacity:
-            .46
-
-        });
-
-
-      const ring =
-        new THREE.Mesh(
-          ringGeometry,
-          ringMaterial
-        );
-
-
-      ring.rotation.set(
-        ...config.rotation
-      );
-
-
-      ring.userData.speed =
-        config.speed;
-
-
-      coreGroup.add(
-        ring
+      profileImage.classList.add(
+        'loaded'
       );
 
     }
   );
-
-
-  /* =======================================================
-     FLOATING CRYSTALLINE SHARDS
-  ======================================================= */
-
-  const shards =
-    new THREE.Group();
-
-
-  for(
-    let i = 0;
-    i < 16;
-    i++
-  ){
-
-    const angle =
-      i / 16 *
-      Math.PI *
-      2;
-
-
-    const radius =
-      1.95 +
-      (i % 3) *
-      .17;
-
-
-    const shardGeometry =
-      new THREE.TetrahedronGeometry(
-        .07 +
-        (i % 3) *
-        .022,
-
-        0
-      );
-
-
-    const shardMaterial =
-      new THREE.MeshStandardMaterial({
-
-        color:
-          i % 2
-            ? SILVER
-            : WHITE,
-
-        roughness:
-          .25,
-
-        metalness:
-          .75,
-
-        flatShading:
-          true
-
-      });
-
-
-    const shard =
-      new THREE.Mesh(
-        shardGeometry,
-        shardMaterial
-      );
-
-
-    shard.position.set(
-
-      Math.cos(angle) *
-      radius,
-
-      Math.sin(
-        angle * 1.7
-      ) * .72,
-
-      Math.sin(angle) *
-      radius
-
-    );
-
-
-    shard.userData.baseY =
-      shard.position.y;
-
-
-    shard.userData.phase =
-      i;
-
-
-    shards.add(
-      shard
-    );
-
-  }
-
-
-  coreGroup.add(
-    shards
-  );
-
-
-  /* =======================================================
-     ENERGY AXES
-  ======================================================= */
-
-  const beamMaterial =
-    new THREE.MeshBasicMaterial({
-
-      color:
-        WHITE,
-
-      transparent:
-        true,
-
-      opacity:
-        .30
-
-    });
-
-
-  const beamX =
-    new THREE.Mesh(
-
-      new THREE.BoxGeometry(
-        3.8,
-        .014,
-        .014
-      ),
-
-      beamMaterial
-
-    );
-
-
-  const beamY =
-    new THREE.Mesh(
-
-      new THREE.BoxGeometry(
-        .014,
-        3.8,
-        .014
-      ),
-
-      beamMaterial
-
-    );
-
-
-  const beamZ =
-    new THREE.Mesh(
-
-      new THREE.BoxGeometry(
-        .014,
-        .014,
-        3.8
-      ),
-
-      beamMaterial
-
-    );
-
-
-  beamX.rotation.z =
-    .35;
-
-
-  beamY.rotation.x =
-    .5;
-
-
-  beamZ.rotation.y =
-    .8;
-
-
-  coreGroup.add(
-    beamX,
-    beamY,
-    beamZ
-  );
-
-
-  /* =======================================================
-     LIGHTING
-  ======================================================= */
-
-  scene.add(
-    new THREE.AmbientLight(
-      WHITE,
-      .72
-    )
-  );
-
-
-  const keyLight =
-    new THREE.DirectionalLight(
-      WHITE,
-      3.2
-    );
-
-
-  keyLight.position.set(
-    4,
-    5,
-    6
-  );
-
-
-  scene.add(
-    keyLight
-  );
-
-
-  const rimLight =
-    new THREE.DirectionalLight(
-      0xbfc4c9,
-      2.1
-    );
-
-
-  rimLight.position.set(
-    -4,
-    1,
-    -3
-  );
-
-
-  scene.add(
-    rimLight
-  );
-
-
-  /* =======================================================
-     MOUSE INTERACTION
-  ======================================================= */
-
-  let targetRX = 0;
-  let targetRY = 0;
-
-
-  window.addEventListener(
-    'mousemove',
-    e => {
-
-      targetRY =
-        (
-          e.clientX /
-          innerWidth -
-          .5
-        ) * .55;
-
-
-      targetRX =
-        (
-          e.clientY /
-          innerHeight -
-          .5
-        ) * .30;
-
-    }
-  );
-
-
-  /* =======================================================
-     ANIMATION
-  ======================================================= */
-
-  function animate(){
-
-    requestAnimationFrame(
-      animate
-    );
-
-
-    core.rotation.x +=
-      .0022;
-
-    core.rotation.y +=
-      .0035;
-
-
-    inner.rotation.x -=
-      .003;
-
-    inner.rotation.y +=
-      .0045;
-
-
-    cage.rotation.x -=
-      .0012;
-
-    cage.rotation.y -=
-      .002;
-
-
-    coreGroup.children
-      .forEach(obj => {
-
-        if(
-          obj.geometry?.type ===
-          'TorusGeometry'
-        ){
-
-          obj.rotation.z +=
-            obj.userData.speed ||
-            .001;
-
-        }
-
-      });
-
-
-    shards.children
-      .forEach(shard => {
-
-        shard.position.y =
-
-          shard.userData.baseY +
-
-          Math.sin(
-            performance.now() *
-            .0008 +
-            shard.userData.phase
-          ) *
-          .08;
-
-
-        shard.rotation.x +=
-          .004;
-
-        shard.rotation.y +=
-          .006;
-
-      });
-
-
-    coreGroup.rotation.x +=
-      (
-        targetRX -
-        coreGroup.rotation.x
-      ) * .018;
-
-
-    coreGroup.rotation.y +=
-      (
-        targetRY -
-        coreGroup.rotation.y
-      ) * .018;
-
-
-    coreGroup.position.y =
-      Math.sin(
-        performance.now() *
-        .00065
-      ) * .1;
-
-
-    renderer.render(
-      scene,
-      camera
-    );
-
-  }
-
-
-  animate();
-
-
-  /* =======================================================
-     RESPONSIVE 3D
-  ======================================================= */
-
-  function resize(){
-
-    camera.aspect =
-      innerWidth /
-      innerHeight;
-
-
-    camera.updateProjectionMatrix();
-
-
-    renderer.setSize(
-      innerWidth,
-      innerHeight
-    );
-
-
-    if(
-      innerWidth < 560
-    ){
-
-      coreGroup.position.x =
-        1.05;
-
-      coreGroup.scale.setScalar(
-        .66
-      );
-
-    }
-
-    else if(
-      innerWidth < 900
-    ){
-
-      coreGroup.position.x =
-        1.05;
-
-      coreGroup.scale.setScalar(
-        .82
-      );
-
-    }
-
-    else{
-
-      coreGroup.position.x =
-        2.35;
-
-      coreGroup.scale.setScalar(
-        1
-      );
-
-    }
-
-  }
-
-
-  window.addEventListener(
-    'resize',
-    resize
-  );
-
-
-  resize();
 
 }
+
+
+
+/* =========================================================
+   IMAGE ERROR HANDLING
+========================================================= */
+
+if(profileImage){
+
+  profileImage.addEventListener(
+    'error',
+    () => {
+
+      console.warn(
+        'Profile image not found. Make sure the file exists at:',
+        'assets/keerthi-profile.png'
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =========================================================
+   REFRESH SCROLLTRIGGER
+========================================================= */
+
+window.addEventListener(
+  'load',
+  () => {
+
+    ScrollTrigger.refresh();
+
+  }
+);
