@@ -4,220 +4,530 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#09090b" />
-  <title>PKS</title>
-  <meta name="description" content="Premium portfolio of PASALA KeerthiSharin — Python, SQL, Generative AI, RAG, Machine Learning and Data Integration." />
+  <title>PKS — Pasala KeerthiSharin</title>
+  <meta name="description"
+    content="Premium portfolio of PASALA KeerthiSharin — Python, SQL, Generative AI, RAG, Machine Learning and Data Integration." />
+  <!-- =====================================================
+       FONTS
+  ====================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- =====================================================
+       CSS
+  ====================================================== -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- =====================================================
+       CUSTOM CURSOR
+  ====================================================== -->
   <div class="cursor cursor-dot"></div>
   <div class="cursor cursor-ring"></div>
-
+  <!-- =====================================================
+       NAVIGATION
+  ====================================================== -->
   <header class="nav-wrap">
     <nav class="nav glass">
       <a class="brand magnetic" href="#home" aria-label="Home">
-        <span class="brand-mark">K</span><span>KEERTHI</span>
+        <span class="brand-mark">
+          K
+        </span>
+        <span>
+          KEERTHI
+        </span>
       </a>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">
+          About
+        </a>
+        <a href="#experience">
+          Experience
+        </a>
+        <a href="#projects">
+          Projects
+        </a>
+        <a href="#skills">
+          Skills
+        </a>
+        <a href="#contact">
+          Contact
+        </a>
       </div>
-      <a class="nav-cta magnetic" href="#contact">Let's connect <span>↗</span></a>
-      <button class="menu-btn" aria-label="Open menu"><span></span><span></span></button>
+      <a class="nav-cta magnetic" href="#contact">
+        Let's connect
+        <span>↗</span>
+      </a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" type="button">
+        <span></span>
+        <span></span>
+      </button>
     </nav>
   </header>
-
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
   <main>
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
     <section id="home" class="hero section">
-      <canvas id="creature-canvas"></canvas>
       <div class="hero-grid"></div>
+      <!-- ===============================================
+           HERO CONTENT
+      ================================================ -->
       <div class="hero-copy">
-        <p class="eyebrow reveal"><span class="pulse"></span> AI • DATA • ENGINEERING</p>
+        <p class="eyebrow reveal">
+          <span class="pulse"></span>
+          AI • DATA • ENGINEERING
+        </p>
         <div class="hero-name-wrap reveal">
-          <br>
-          <div class="hero-name-kicker">HELLO, I'M</div>
+          <div class="hero-name-kicker">
+            HELLO, I'M
+          </div>
           <h1 class="hero-title">
-            <span class="line">PASALA</span>
-            <span class="line outline">KEERTHI SHARIN<span class="accent">.</span></span>
+            <span class="line">
+              PASALA
+            </span>
+            <span class="line outline">
+              KEERTHI SHARIN<span class="accent">.</span>
+            </span>
           </h1>
-          <div class="hero-name-signature">AI × DATA × ENGINEERING</div>
         </div>
-        <p class="hero-sub reveal">Building intelligent systems where <strong>data</strong>, <strong>AI</strong> and thoughtful engineering meet.</p>
+        <p class="hero-sub reveal">
+          Building intelligent systems where
+          <strong>data</strong>,
+          <strong>AI</strong>
+          and thoughtful engineering meet.
+        </p>
         <div class="hero-actions reveal">
-          <a class="btn btn-dark magnetic" href="#projects">Explore work <span>↓</span></a>
-          <a class="text-link magnetic" href="#contact">Get in touch <span>↗</span></a>
+          <a class="btn btn-dark magnetic" href="#projects">
+            Explore work
+            <span>
+              ↓
+            </span>
+          </a>
+          <a class="text-link magnetic" href="#contact">
+            Get in touch
+            <span>
+              ↗
+            </span>
+          </a>
         </div>
       </div>
-      <div class="hero-meta reveal">
-        <span>PROGRAMMER ANALYST TRAINEE</span>
-        <span>COGNIZANT · 2025—PRESENT</span>
+      <!-- ===============================================
+           PROFILE IMAGE
+           
+           Save the generated portrait as:
+           
+           assets/keerthi-profile.png
+      ================================================ -->
+      <div class="hero-photo-wrap reveal" aria-label="Portrait of Pasala KeerthiSharin">
+        <div class="hero-photo-frame">
+          <div class="hero-photo-glow"></div>
+          <div class="hero-photo-shine"></div>
+          <img class="hero-photo" src="Keerthi.png" alt="Pasala KeerthiSharin" loading="eager">
+          <div class="hero-photo-caption">
+            <span>
+              PASALA KEERTHISHARIN
+            </span>
+            <span>
+              AI × DATA × ENGINEERING
+            </span>
+          </div>
+        </div>
       </div>
-      <div class="scroll-cue">SCROLL <span></span></div>
+      <!-- ===============================================
+           HERO META
+      ================================================ -->
+      <div class="hero-meta reveal">
+        <span>
+          PROGRAMMER ANALYST TRAINEE
+        </span>
+        <span>
+          COGNIZANT · 2025—PRESENT
+        </span>
+      </div>
     </section>
-
+    <!-- ===================================================
+         ABOUT
+    ==================================================== -->
     <section id="about" class="section about">
-      <div class="section-label reveal">01 / ABOUT</div>
+      <div class="section-label reveal">
+        01 / ABOUT
+      </div>
       <div class="about-layout">
         <div>
-          <p class="display-copy reveal">I turn complex technical ideas into <em>useful, intelligent experiences.</em></p>
+          <p class="display-copy reveal">
+            I turn complex technical ideas into
+            <em>
+              useful, intelligent experiences.
+            </em>
+          </p>
         </div>
         <div class="about-card glass reveal">
-          <p>My foundation spans Python, SQL, data integration and ETL, with growing depth in Generative AI, LLMs, RAG and Machine Learning.</p>
-          <p>I enjoy building systems that retrieve the right information, reason over it, and present it through simple interfaces.</p>
+          <p>
+            My foundation spans Python, SQL, data integration and ETL,
+            with growing depth in Generative AI, LLMs, RAG and Machine Learning.
+          </p>
+          <p>
+            I enjoy building systems that retrieve the right information,
+            reason over it, and present it through simple interfaces.
+          </p>
           <div class="mini-stats">
-            <div><strong>8.45</strong><span>CGPA</span></div>
-            <div><strong>02</strong><span>Featured projects</span></div>
-            <div><strong>AI</strong><span>Core direction</span></div>
+            <div>
+              <strong>8.45</strong>
+              <span>CGPA</span>
+            </div>
+            <div>
+              <strong>02</strong>
+              <span>Featured projects</span>
+            </div>
+            <div>
+              <strong>AI</strong>
+              <span>Core direction</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
+    <!-- ===================================================
+         EXPERIENCE
+    ==================================================== -->
     <section id="experience" class="section experience">
-      <div class="section-label reveal">02 / EXPERIENCE</div>
-      <div class="experience-intro">
-        <h2 class="experience-title reveal">A journey<br>in <em>motion.</em></h2>
-        <p class="experience-note reveal">From engineering fundamentals to intelligent systems — each chapter adds another layer.</p>
+      <div class="section-label reveal">
+        02 / EXPERIENCE
       </div>
-
+      <div class="experience-intro">
+        <h2 class="experience-title reveal">
+          A journey<br>
+          in <em>motion.</em>
+        </h2>
+        <p class="experience-note reveal">
+          From engineering fundamentals to intelligent systems —
+          each chapter adds another layer.
+        </p>
+      </div>
       <div class="timeline">
-        <div class="timeline-line"><span></span></div>
-
+        <div class="timeline-line">
+          <span></span>
+        </div>
         <article class="timeline-item reveal">
-          <div class="timeline-marker"><i></i></div>
-          <div class="timeline-date">DEC 2025<br><b>— PRESENT</b></div>
+          <div class="timeline-marker">
+            <i></i>
+          </div>
+          <div class="timeline-date">
+            DEC 2025<br>
+            <b>— PRESENT</b>
+          </div>
           <div class="timeline-card">
             <div class="timeline-card-top">
-              <span class="timeline-index">01</span>
-              <span class="timeline-status"><i></i> CURRENT</span>
+              <span class="timeline-index">
+                01
+              </span>
+              <span class="timeline-status">
+                <i></i>
+                CURRENT
+              </span>
             </div>
             <div class="timeline-content">
               <div>
-                <div class="timeline-kicker">PROFESSIONAL EXPERIENCE</div>
-                <h3>Cognizant<br><em>Technology Solutions</em></h3>
+                <div class="timeline-kicker">
+                  PROFESSIONAL EXPERIENCE
+                </div>
+                <h3>
+                  Cognizant<br>
+                  <em>Technology Solutions</em>
+                </h3>
               </div>
               <div class="timeline-role">
-                <strong>Programmer Analyst Trainee</strong>
-                <p>Training and hands-on exposure across AIA Data Integration, Python, SQL, DBMS, ETL and data management.</p>
+                <strong>
+                  Programmer Analyst Trainee
+                </strong>
+                <p>
+                  Training and hands-on exposure across AIA Data Integration,
+                  Python, SQL, DBMS, ETL and data management.
+                </p>
               </div>
             </div>
             <div class="timeline-bottom">
-              <span>PYTHON</span><span>SQL</span><span>DBMS</span><span>ETL</span><span>GENAI</span><span>LLMs</span>
+              <span>PYTHON</span>
+              <span>SQL</span>
+              <span>DBMS</span>
+              <span>ETL</span>
+              <span>GENAI</span>
+              <span>LLMs</span>
             </div>
           </div>
         </article>
-
         <article class="timeline-item reveal">
-          <div class="timeline-marker"><i></i></div>
-          <div class="timeline-date">2021<br><b>— 2025</b></div>
+          <div class="timeline-marker">
+            <i></i>
+          </div>
+          <div class="timeline-date">
+            2021<br>
+            <b>— 2025</b>
+          </div>
           <div class="timeline-card education-card">
             <div class="timeline-card-top">
-              <span class="timeline-index">02</span>
-              <span class="timeline-status">EDUCATION</span>
+              <span class="timeline-index">
+                02
+              </span>
+              <span class="timeline-status">
+                EDUCATION
+              </span>
             </div>
             <div class="timeline-content">
               <div>
-                <div class="timeline-kicker">ACADEMIC FOUNDATION</div>
-                <h3>CSE <em>(AIML)</em></h3>
+                <div class="timeline-kicker">
+                  ACADEMIC FOUNDATION
+                </div>
+                <h3>
+                  CSE <em>(AIML)</em>
+                </h3>
               </div>
               <div class="timeline-role">
-                <strong>Kalasalingam Academy of Research and Education</strong>
-                <p>Computer Science & Engineering with Artificial Intelligence & Machine Learning specialization.</p>
+                <strong>
+                  Kalasalingam Academy of Research and Education
+                </strong>
+                <p>
+                  Computer Science & Engineering with Artificial Intelligence
+                  & Machine Learning specialization.
+                </p>
               </div>
             </div>
             <div class="timeline-bottom">
-              <span>CGPA 8.45</span><span>AIML</span><span>MACHINE LEARNING</span>
+              <span>CGPA 8.45</span>
+              <span>AIML</span>
+              <span>MACHINE LEARNING</span>
             </div>
           </div>
         </article>
       </div>
     </section>
-
+    <!-- ===================================================
+         PROJECTS
+    ==================================================== -->
     <section id="projects" class="section projects">
-      <div class="section-label reveal">03 / SELECTED WORK</div>
-      <div class="project-heading">
-        <h2 class="reveal">Projects that<br><em>think.</em></h2>
-        <p class="reveal">Move your cursor over a card. The interface responds to you.</p>
+      <div class="section-label reveal">
+        03 / SELECTED WORK
       </div>
-
+      <div class="project-heading">
+        <h2 class="reveal">
+          Projects that<br>
+          <em>think.</em>
+        </h2>
+        <p class="reveal">
+          Move your cursor over a card.
+          The interface responds to you.
+        </p>
+      </div>
       <div class="project-stack">
         <article class="project-card project-one tilt-card reveal">
           <div class="project-glow"></div>
-          <div class="project-number">01</div>
-          <div class="project-content">
-            <div class="project-type">RAG / GENERATIVE AI</div>
-            <h3>Enterprise HR<br>Policy AI Assistant</h3>
-            <p>A context-aware Q&A system that retrieves enterprise policy knowledge and uses an LLM to generate grounded responses.</p>
-            <div class="project-tags"><span>Python</span><span>LangChain</span><span>FAISS</span><span>LLM</span><span>Streamlit</span></div>
+          <div class="project-number">
+            01
           </div>
-          <div class="project-orb">↗</div>
+          <div class="project-content">
+            <div class="project-type">
+              RAG / GENERATIVE AI
+            </div>
+            <h3>
+              Enterprise HR<br>
+              Policy AI Assistant
+            </h3>
+            <p>
+              A context-aware Q&A system that retrieves enterprise
+              policy knowledge and uses an LLM to generate grounded responses.
+            </p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>LangChain</span>
+              <span>FAISS</span>
+              <span>LLM</span>
+              <span>Streamlit</span>
+            </div>
+          </div>
+          <div class="project-orb">
+            ↗
+          </div>
         </article>
-
         <article class="project-card project-two tilt-card reveal">
           <div class="project-glow"></div>
-          <div class="project-number">02</div>
-          <div class="project-content">
-            <div class="project-type">COMPUTER VISION / ML</div>
-            <h3>Human Suspicious<br>Activity Detection</h3>
-            <p>A real-time video analysis system designed to identify abnormal or potentially suspicious human activity and generate alerts.</p>
-            <div class="project-tags"><span>Python</span><span>OpenCV</span><span>Computer Vision</span><span>Deep Learning</span></div>
+          <div class="project-number">
+            02
           </div>
-          <div class="project-orb">↗</div>
+          <div class="project-content">
+            <div class="project-type">
+              COMPUTER VISION / ML
+            </div>
+            <h3>
+              Human Suspicious<br>
+              Activity Detection
+            </h3>
+            <p>
+              A real-time video analysis system designed to identify
+              abnormal or potentially suspicious human activity and generate alerts.
+            </p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>OpenCV</span>
+              <span>Computer Vision</span>
+              <span>Deep Learning</span>
+            </div>
+          </div>
+          <div class="project-orb">
+            ↗
+          </div>
         </article>
       </div>
     </section>
-
+    <!-- ===================================================
+         SKILLS
+    ==================================================== -->
     <section id="skills" class="section skills">
-      <div class="section-label reveal">04 / TOOLKIT</div>
+      <div class="section-label reveal">
+        04 / TOOLKIT
+      </div>
       <div class="skills-layout">
-        <h2 class="reveal">A stack built<br>for <em>intelligence.</em></h2>
+        <h2 class="reveal">
+          A stack built<br>
+          for <em>intelligence.</em>
+        </h2>
         <div class="skill-grid reveal">
-          <div class="skill"><span>01</span><b>Python</b><small>PROGRAMMING</small></div>
-          <div class="skill"><span>02</span><b>SQL</b><small>DATA</small></div>
-          <div class="skill"><span>03</span><b>Generative AI</b><small>AI TECHNOLOGY</small></div>
-          <div class="skill"><span>04</span><b>LLMs</b><small>AI TECHNOLOGY</small></div>
-          <div class="skill"><span>05</span><b>Prompt Engineering</b><small>AI TECHNOLOGY</small></div>
-          <div class="skill"><span>06</span><b>FAISS</b><small>RETRIEVAL</small></div>
-          <div class="skill"><span>07</span><b>LangChain</b><small>AI FRAMEWORK</small></div>
-          <div class="skill"><span>08</span><b>Git / GitHub</b><small>TOOLS</small></div>
-          <div class="skill"><span>09</span><b>MySQL</b><small>DATABASE</small></div>
-          <div class="skill"><span>10</span><b>OpenCV</b><small>COMPUTER VISION</small></div>
-          <div class="skill"><span>11</span><b>ETL</b><small>DATA INTEGRATION</small></div>
-          <div class="skill"><span>12</span><b>Streamlit</b><small>INTERFACE</small></div>
+          <div class="skill">
+            <span>01</span>
+            <b>Python</b>
+            <small>PROGRAMMING</small>
+          </div>
+          <div class="skill">
+            <span>02</span>
+            <b>SQL</b>
+            <small>DATA</small>
+          </div>
+          <div class="skill">
+            <span>03</span>
+            <b>Generative AI</b>
+            <small>AI TECHNOLOGY</small>
+          </div>
+          <div class="skill">
+            <span>04</span>
+            <b>LLMs</b>
+            <small>AI TECHNOLOGY</small>
+          </div>
+          <div class="skill">
+            <span>05</span>
+            <b>Prompt Engineering</b>
+            <small>AI TECHNOLOGY</small>
+          </div>
+          <div class="skill">
+            <span>06</span>
+            <b>FAISS</b>
+            <small>RETRIEVAL</small>
+          </div>
+          <div class="skill">
+            <span>07</span>
+            <b>LangChain</b>
+            <small>AI FRAMEWORK</small>
+          </div>
+          <div class="skill">
+            <span>08</span>
+            <b>Git / GitHub</b>
+            <small>TOOLS</small>
+          </div>
+          <div class="skill">
+            <span>09</span>
+            <b>MySQL</b>
+            <small>DATABASE</small>
+          </div>
+          <div class="skill">
+            <span>10</span>
+            <b>OpenCV</b>
+            <small>COMPUTER VISION</small>
+          </div>
+          <div class="skill">
+            <span>11</span>
+            <b>ETL</b>
+            <small>DATA INTEGRATION</small>
+          </div>
+          <div class="skill">
+            <span>12</span>
+            <b>Streamlit</b>
+            <small>INTERFACE</small>
+          </div>
         </div>
       </div>
     </section>
-
+    <!-- ===================================================
+         CONTACT
+    ==================================================== -->
     <section id="contact" class="section contact">
       <div class="contact-aura"></div>
-      <div class="section-label reveal">05 / CONTACT</div>
+      <div class="section-label reveal">
+        05 / CONTACT
+      </div>
       <div class="contact-inner">
-        <p class="eyebrow reveal">HAVE A PROJECT IN MIND?</p>
-        <h2 class="contact-title reveal">Let's build<br><em>something smart.</em></h2>
-        <a class="contact-email magnetic reveal" href="mailto:sharinkeerthi@gmail.com">sharinkeerthi@gmail.com <span>↗</span></a>
+        <p class="eyebrow reveal">
+          HAVE A PROJECT IN MIND?
+        </p>
+        <h2 class="contact-title reveal">
+          Let's build<br>
+          <em>something smart.</em>
+        </h2>
+        <a class="contact-email magnetic reveal" href="mailto:sharinkeerthi@gmail.com">
+          sharinkeerthi@gmail.com
+          <span>↗</span>
+        </a>
         <div class="contact-grid reveal">
-          <a href="mailto:sharinkeerthi@gmail.com" class="contact-item magnetic"><small>EMAIL</small><strong>sharinkeerthi@gmail.com</strong></a>
-          <a href="tel:+91 9121460465" class="contact-item magnetic"><small>PHONE</small><strong>+91 9121460465</strong></a>
-          <a href="https://linkedin.com/in/keerthisharin" target="_blank" rel="noopener" class="contact-item magnetic"><small>LINKEDIN</small><strong>Connect on LinkedIn ↗</strong></a>
-          <a href="https://github.com/keerthisharin12" target="_blank" rel="noopener" class="contact-item magnetic"><small>GITHUB</small><strong>Explore GitHub ↗</strong></a>
+          <a href="mailto:sharinkeerthi@gmail.com" class="contact-item magnetic">
+            <small>EMAIL</small>
+            <strong>
+              sharinkeerthi@gmail.com
+            </strong>
+          </a>
+          <a href="tel:+919121460465" class="contact-item magnetic">
+            <small>PHONE</small>
+            <strong>
+              +91 9121460465
+            </strong>
+          </a>
+          <a href="https://linkedin.com/in/keerthisharin" target="_blank" rel="noopener" class="contact-item magnetic">
+            <small>LINKEDIN</small>
+            <strong>
+              Connect on LinkedIn ↗
+            </strong>
+          </a>
+          <a href="https://github.com/keerthisharin12" target="_blank" rel="noopener" class="contact-item magnetic">
+            <small>GITHUB</small>
+            <strong>
+              Explore GitHub ↗
+            </strong>
+          </a>
         </div>
       </div>
     </section>
   </main>
-
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
   <footer>
-    <span>© 2026 PASALA KeerthiSharin</span>
-    <span>BUILT WITH CURIOSITY × CODE</span>
+    <span>
+      © 2026 PASALA KeerthiSharin
+    </span>
+    <span>
+      BUILT WITH CURIOSITY × CODE
+    </span>
   </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- =====================================================
+       GSAP
+  ====================================================== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- =====================================================
+       MAIN JS
+  ====================================================== -->
   <script src="script.js"></script>
 </body>
 </html>
